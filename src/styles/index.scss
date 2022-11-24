@@ -1,0 +1,94 @@
+/* Common css */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Circular', serif; }
+ol, ul { list-style: none; } 
+body { overflow-x: hidden; }
+a { display: inline-block; text-decoration: none; }
+img { width: 100%; font-size: 0; }
+input { outline: none; }
+button { background: none; outline: none; border: none; }
+
+// Fonts
+@font-face {
+    font-family: 'Circular';
+    font-weight: 400;
+    src: url('./fonts/circular-std-book.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Circular';
+    font-weight: 500;
+    src: url('./fonts/circular-std-medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Circular';
+    font-weight: 700;
+    src: url('./fonts/circular-std-bold.woff2') format('woff2');
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.l_logo {
+    text-align: center;
+    padding: 50px 0 60px;
+
+    img {
+        width: 155px;
+    }
+}
+
+.auth_container {
+    border: 1px solid #EBF0F4;
+    border-radius: 3px;
+    padding: 45px 50px;
+}
+
+.auth_header {
+    margin-bottom: 40px;
+    h3 {
+        font-size: 32px;
+        line-height: 38px;
+        font-weight: 500;
+        color: #1D2B3B;
+        margin-bottom: 15px;
+    }
+    p {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #646F7A;
+    }
+}
+
+.form-control {
+    margin-bottom: 25px;
+
+    label {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #1D2B3B;
+        display: block;
+        margin-bottom: 5px;
+
+        span {
+            color: #646F7A;
+        }
+    }
+
+    input {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #1D2B3B;
+        padding: 14px 20px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #EBF0F4;
+    }
+}

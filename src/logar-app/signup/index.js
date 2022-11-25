@@ -1,8 +1,8 @@
-// Login
+// Signup
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Signup = () => {
     return (
         <React.Fragment>
             <div className="container">
@@ -13,13 +13,24 @@ const Login = () => {
 
                 <div className="auth_container">
                     <div className="auth_header">
-                        <h3>Log in</h3>
-                        <p>Welcome back! Please enter your credentials to continue.</p>
+                        <h3>Sign up</h3>
+                        <p>Fill this details to continue with Logar.</p>
                     </div>
 
                     <div className="auth_content">
                         <form>
-                            
+
+                            <div className="form-control-col">
+                                <div className="form-control">
+                                    <label htmlFor="firstName">Firstname <span>*</span></label>
+                                    <input type="text" name="firstName" id="firstName"  />
+                                </div>
+                                <div className="form-control">
+                                    <label htmlFor="lastName">Lastname <span>*</span></label>
+                                    <input type="text" name="lastName" id="lastName"  />
+                                </div>
+                            </div>
+
                             <div className="form-control">
                                 <label htmlFor="email">Email <span>*</span></label>
                                 <input type="text" name="email" id="email"  />
@@ -30,26 +41,14 @@ const Login = () => {
                                 <input type="password" name="password" id="password"  />
                             </div>
 
-                            <div className="form-note">
-                                <div className="form-remember">
-                                    <div className="form-radio">
-                                        <input type="checkbox" name="remember" id="remember" />
-                                        <label htmlFor="remember"> Keep me signed in </label>
-                                    </div>
-
-                                </div>
-
-                                <p> <Link to="/forgot-password" className="text-dark">Forgot Password?</Link> </p>
-                            </div>
-                            
                             <div className="btn-control">
                                 <button type="submit" className="btn btn-primary">
-                                    Login
+                                    Signup
                                 </button>
                             </div>
 
                             <p className="text-center">
-                                Don't have an account? <Link to="/signup" className="font-medium">Sign up</Link>
+                                Already have an account? <Link to="/" className="font-medium">Sign In</Link>
                             </p>
 
                             <div className="social-login">
@@ -78,4 +77,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Signup;

@@ -38,7 +38,7 @@ p { font-size: 16px; line-height: 22px; color: #1D2B3B; font-weight: 400; }
 .font-medium { font-weight: 500; }
 
 .container {
-    max-width: 700px;
+    max-width: 660px;
     width: 100%;
     padding: 20px;
     margin: 0 auto;
@@ -64,15 +64,15 @@ p { font-size: 16px; line-height: 22px; color: #1D2B3B; font-weight: 400; }
 .auth_header {
     margin-bottom: 40px;
     h3 {
-        font-size: 32px;
-        line-height: 38px;
+        font-size: 28px;
+        line-height: 32px;
         font-weight: 500;
         color: #1D2B3B;
         margin-bottom: 15px;
     }
     p {
-        font-size: 16px;
-        line-height: 20px;
+        font-size: 14px;
+        line-height: 18px;
         font-weight: 400;
         color: #646F7A;
     }
@@ -180,7 +180,7 @@ p { font-size: 16px; line-height: 22px; color: #1D2B3B; font-weight: 400; }
 }
 
 .btn-control {
-    margin: 30px 0;
+    margin: 30px 0 25px;
 }
 .btn {
     background-color: #0C57FB;

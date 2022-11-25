@@ -2,7 +2,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
 const Login = () => {
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+        validationSchema: Yup.object({
+            email: Yup.string().required('Email is required.').email('Please enter a valid email'),
+            password: Yup.string().required('Password is required.'),
+        }),
+        onSubmit: values => {
+            console.log('values', values);
+        }
+    });
+
+    const getError = name => {
+        return formik?.errors?.[name] && formik?.touched?.[name] ? 'form-control-error' : '';
+    }
+
     return (
         <React.Fragment>
             <div className="container">
@@ -18,16 +40,26 @@ const Login = () => {
                     </div>
 
                     <div className="auth_content">
-                        <form>
+                        <form onSubmit={formik.handleSubmit}>
                             
                             <div className="form-control">
                                 <label htmlFor="email">Email <span>*</span></label>
-                                <input type="text" name="email" id="email"  />
+                                <input type="text" name="email" id="email" value={formik.values.email} onChange={formik.handleChange} className={getError('email')} />
+
+                                {
+                                    getError('email') &&
+                                    <span className="form-error">{formik?.errors?.email}</span>
+                                }
                             </div>
                             
                             <div className="form-control">
                                 <label htmlFor="password">Password <span>*</span></label>
-                                <input type="password" name="password" id="password"  />
+                                <input type="password" name="password" id="password" value={formik.values.password} onChange={formik.handleChange} className={getError('password')}  />
+
+                                {
+                                    getError('password') &&
+                                    <span className="form-error">{formik?.errors?.password}</span>
+                                }
                             </div>
 
                             <div className="form-note">
@@ -36,7 +68,6 @@ const Login = () => {
                                         <input type="checkbox" name="remember" id="remember" />
                                         <label htmlFor="remember"> Keep me signed in </label>
                                     </div>
-
                                 </div>
 
                                 <p> <Link to="/forgot-password" className="text-dark">Forgot Password?</Link> </p>

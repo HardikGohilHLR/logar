@@ -2,7 +2,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
 const Signup = () => {
+    
+    const formik = useFormik({
+        initialValues: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: ''
+        },
+        validationSchema: Yup.object({
+            firstName: Yup.string().required('Firstname is required.'),
+            lastName: Yup.string().required('Lastname is required.'),
+            email: Yup.string().required('Email is required.').email('Please enter a valid email'),
+            password: Yup.string().required('Password is required.'),
+        }),
+        onSubmit: values => {
+            console.log('values', values);
+        }
+    });
+
+    const getError = name => {
+        return formik?.errors?.[name] && formik?.touched?.[name] ? 'form-control-error' : '';
+    }
+
     return (
         <React.Fragment>
             <div className="container">
@@ -18,33 +44,54 @@ const Signup = () => {
                     </div>
 
                     <div className="auth_content">
-                        <form>
+                        <form onSubmit={formik.handleSubmit}>
 
                             <div className="form-control-col">
+
                                 <div className="form-control">
                                     <label htmlFor="firstName">Firstname <span>*</span></label>
-                                    <input type="text" name="firstName" id="firstName"  />
+                                    <input type="text" name="firstName" id="firstName" value={formik.values.firstName} onChange={formik.handleChange} className={getError('firstName')} />
+                                    
+                                    {
+                                        getError('firstName') &&
+                                        <span className="form-error">{formik?.errors?.firstName}</span>
+                                    }
                                 </div>
+
                                 <div className="form-control">
                                     <label htmlFor="lastName">Lastname <span>*</span></label>
-                                    <input type="text" name="lastName" id="lastName"  />
+                                    <input type="text" name="lastName" id="lastName" value={formik.values.lastName} onChange={formik.handleChange} className={getError('lastName')} />
+
+                                    {
+                                        getError('lastName') &&
+                                        <span className="form-error">{formik?.errors?.lastName}</span>
+                                    }
                                 </div>
+
                             </div>
 
                             <div className="form-control">
                                 <label htmlFor="email">Email <span>*</span></label>
-                                <input type="text" name="email" id="email"  />
+                                <input type="text" name="email" id="email" value={formik.values.email} onChange={formik.handleChange} className={getError('email')} />
+
+                                {
+                                    getError('email') &&
+                                    <span className="form-error">{formik?.errors?.email}</span>
+                                }
                             </div>
                             
                             <div className="form-control">
                                 <label htmlFor="password">Password <span>*</span></label>
-                                <input type="password" name="password" id="password"  />
+                                <input type="password" name="password" id="password" value={formik.values.password} onChange={formik.handleChange} className={getError('password')}  />
+
+                                {
+                                    getError('password') &&
+                                    <span className="form-error">{formik?.errors?.password}</span>
+                                }
                             </div>
 
                             <div className="btn-control">
-                                <button type="submit" className="btn btn-primary">
-                                    Signup
-                                </button>
+                                <button type="submit" className="btn btn-primary"> Signup </button>
                             </div>
 
                             <p className="text-center">

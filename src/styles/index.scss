@@ -92,6 +92,10 @@ p { font-size: 16px; line-height: 22px; color: #1D2B3B; font-weight: 400; }
         }
     }
 
+    &-error {
+        border-color: #e74c3c !important;
+    }
+
     label {
         font-size: 16px;
         line-height: 22px;
@@ -115,6 +119,15 @@ p { font-size: 16px; line-height: 22px; color: #1D2B3B; font-weight: 400; }
         border-radius: 5px;
         border: 1px solid #EBF0F4;
     }
+
+}
+
+.form-error {
+    font-size: 14px;
+    line-height: 18px;
+    color: #e74c3c;
+    margin-top: 7px;
+    display: block;
 }
 
 .form-note {

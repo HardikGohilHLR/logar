@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 
 import { auth, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from '../../firebase.config';
 import { ERROR_MESSAGES } from '../../common/constant';
+import GoogleLogin from '../../components/google-login';
 
 const Signup = () => {
 
@@ -66,6 +67,10 @@ const Signup = () => {
 
     const getError = name => {
         return formik?.errors?.[name] && formik?.touched?.[name] ? 'form-control-error' : '';
+    }
+
+    const loginError = (message) => {
+        setFormMessages({type: 'danger', message});
     }
 
     return (
@@ -151,15 +156,12 @@ const Signup = () => {
                                 </div>
 
                                 <div className="social-login-btns">
-                                    <button className="social-login-btn">
-                                        <img src="/images/google-icon.svg" alt="Google" />
-                                        Login with Google 
-                                    </button>
+                                    <GoogleLogin googleLoginError={loginError} />
                                     
-                                    <button className="social-login-btn"> 
+                                    {/* <button className="social-login-btn"> 
                                         <img src="/images/facebook-icon.svg" alt="Facebook" />
                                         Login with Facebook 
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
 

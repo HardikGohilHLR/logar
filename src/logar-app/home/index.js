@@ -1,9 +1,10 @@
 // Home
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/navbar';
 
 import { auth, onAuthStateChanged } from '../../firebase.config';
+
+import Navbar from '../../components/navbar';
 
 const Home = () => {
 

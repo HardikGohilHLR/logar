@@ -63,3 +63,75 @@
         transform: rotate(360deg);
     }
 }
+
+// Social Buttons
+
+.social-login {
+    &-header {
+        position: relative;
+        text-align: center;
+        margin: 25px 0 35px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            height: 1px;
+            width: 100%;
+            background-color: #EBF0F4;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 18px;
+            color: #646F7A;
+            padding: 0 15px;
+            background-color: #FFFFFF;
+            position: relative;
+            z-index: 4;
+            display: inline-block;
+            margin: 0 auto;
+        }
+    }
+
+    &-btns {
+        display: flex;
+        align-items: center;
+
+    }
+
+    &-btn {
+        outline: none;
+        background-color: #FFFFFF;
+        border: 1px solid #EBF0F4;
+        border-radius: 5px;
+        padding: 16px 25px;
+        width: 100%;
+        font-size: 16px;
+        line-height: 22px;
+        color: #1D2B3B;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 22px;
+            margin-right: 15px;
+        }
+
+        &:first-child {
+            margin-right: 26px;
+        }
+    }
+}
+
+.google-login-button {
+    > div {
+        position: absolute;
+        opacity: 0;
+        z-index: 1;
+        box-shadow: none;
+    }
+}

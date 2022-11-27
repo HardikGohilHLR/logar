@@ -6,8 +6,10 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { auth, onAuthStateChanged, signInWithEmailAndPassword } from '../../firebase.config';
-import Alert from '../../components/alert';
 import { ERROR_MESSAGES } from '../../common/constant';
+
+import Alert from '../../components/alert';
+import GoogleLogin from '../../components/google-login';
 
 const Login = () => {
 
@@ -51,6 +53,10 @@ const Login = () => {
 
     const getError = name => {
         return formik?.errors?.[name] && formik?.touched?.[name] ? 'form-control-error' : '';
+    }
+
+    const loginError = (message) => {
+        setFormMessages({type: 'danger', message});
     }
 
     return (
@@ -117,15 +123,12 @@ const Login = () => {
                                 </div>
 
                                 <div className="social-login-btns">
-                                    <button className="social-login-btn">
-                                        <img src="/images/google-icon.svg" alt="Google" />
-                                        Login with Google 
-                                    </button>
+                                    <GoogleLogin googleLoginError={loginError} />
                                     
-                                    <button className="social-login-btn"> 
+                                    {/* <button className="social-login-btn"> 
                                         <img src="/images/facebook-icon.svg" alt="Facebook" />
                                         Login with Facebook 
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
 

@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { auth, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from '../../firebase.config';
+import { ERROR_MESSAGES } from '../../common/constant';
 
 const Signup = () => {
 
@@ -53,12 +54,12 @@ const Signup = () => {
                 })
 				.catch((error) => {
                     setIsLoading(false);
-					setFormMessages({type: 'danger', message: error?.message});
+                    setFormMessages({type: 'danger', message: ERROR_MESSAGES?.[error?.code] || error?.code});
 				});
 			})
 			.catch((error) => { 
                 setIsLoading(false);
-                setFormMessages({type: 'danger', message: error?.message});
+                setFormMessages({type: 'danger', message: ERROR_MESSAGES?.[error?.code] || error?.code});
 			});
         }
     });

@@ -6,6 +6,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { auth, onAuthStateChanged, signInWithEmailAndPassword } from '../../firebase.config';
+import Alert from '../../components/alert';
+import { ERROR_MESSAGES } from '../../common/constant';
 
 const Login = () => {
 
@@ -42,7 +44,7 @@ const Login = () => {
 			})
 			.catch((error) => {
                 setIsLoading(false);
-                setFormMessages({type: 'danger', message: error?.message});
+				setFormMessages({type: 'danger', message: ERROR_MESSAGES?.[error?.code] || error?.code});
 			});
         }
     });
@@ -65,13 +67,7 @@ const Login = () => {
                         <p>Welcome back! Please enter your credentials to continue.</p>
                     </div>
 
-                    {
-                        formMessages &&
-                        <div className={`message is-${formMessages?.type}`}>
-                            <p>{ formMessages?.message }</p>
-                            <button type="button" className="delete" onClick={() => setFormMessages(null)}>&#10005;	</button>
-                        </div>
-                    }
+                    { formMessages && <Alert alert={formMessages} setAlert={setFormMessages} /> }
 
                     <div className="auth_content">
                         <form onSubmit={formik.handleSubmit}>

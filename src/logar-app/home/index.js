@@ -1,8 +1,9 @@
 // Home
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../../components/navbar';
 
-import { auth, onAuthStateChanged, signOut } from '../../firebase.config';
+import { auth, onAuthStateChanged } from '../../firebase.config';
 
 const Home = () => {
 
@@ -18,28 +19,28 @@ const Home = () => {
             }
         });
     }, [navigate]);
-
-    const logout = () => {
-        signOut(auth);
-    }
     
     return (
         <React.Fragment>
 
-            <h1>Hey, {user?.displayName}</h1>
+            <Navbar />
 
-            <h2>{user?.email}</h2>
-            
-            {
-                user?.providerData?.length === 1 && user?.providerData?.[0]?.providerId === 'google.com' &&
-                <span className="tag is-danger ml-3 is-inline-flex is-align-items-center">
-                    Logged in with Google
-                </span>
-            }
+            <div className="home">
+                <div className="container">
 
-            <button className="btn btn-primary" onClick={logout}>
-                Logout
-            </button>
+                    <h1>Hey, {user?.displayName}</h1>
+
+                    <h2>{user?.email}</h2>
+
+                    {
+                        user?.providerData?.length === 1 && user?.providerData?.[0]?.providerId === 'google.com' &&
+                        <span className="tag is-danger ml-3 is-inline-flex is-align-items-center">
+                            Logged in with Google
+                        </span>
+                    }
+                </div>
+            </div>
+
         </React.Fragment>
     )
 }

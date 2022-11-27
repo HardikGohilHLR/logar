@@ -42,7 +42,7 @@ const ForgotPassword = () => {
 
     return (
         <React.Fragment>
-            <div className="container">
+            <div className="form_container container">
 
                 <div className="l_logo">
                     <img src="/logar.svg" alt="Logar" />

@@ -44,6 +44,23 @@
 
 }
 
+.form-feedback {
+    font-size: 14px;
+    line-height: 18px;
+    color: #646F7A;
+    margin-top: 7px;
+    display: block;
+
+    &.invalid {
+        color: #e74c3c;
+    }
+
+    &.valid {
+        color: $green;
+
+    }
+}
+
 .form-error {
     font-size: 14px;
     line-height: 18px;

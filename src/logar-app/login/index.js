@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { auth, onAuthStateChanged, signInWithEmailAndPassword } from '../../firebase.config';
-import { ERROR_MESSAGES } from '../../common/constant';
+import { ERROR_MESSAGES, PASSWORD_VALIDATION } from '../../common/constant';
 
 import Alert from '../../components/alert';
 import GoogleLogin from '../../components/google-login';
@@ -32,8 +32,20 @@ const Login = () => {
             password: ''
         },
         validationSchema: Yup.object({
-            email: Yup.string().required('Email is required.').email('Please enter a valid email'),
-            password: Yup.string().required('Password is required.'),
+            email: Yup.string().required('Please enter you email.').email('Please enter a valid email'),
+            password: Yup
+            .string()
+            .required('required')
+            .matches(/^(?=.{8,})/, 'minlength')
+            .matches( /^(?=.*[a-z])/, "lowercase")
+            .matches( /^(?=.*[A-Z])/, "uppercase")
+            .matches( /^(?=.*[0-9])/, "number")
+            .matches( /^(?=.*[!@#\$%\^&\*])/, "special"),
+
+            // .matches(
+            //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+            //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+            // ),
         }),
         onSubmit: values => {
             setIsLoading(true);
@@ -50,6 +62,10 @@ const Login = () => {
 			});
         }
     });
+
+    useEffect(() => {
+        console.log('formik.errors', formik.errors);
+    }, [formik.errors])
 
     const getError = name => {
         return formik?.errors?.[name] && formik?.touched?.[name] ? 'form-control-error' : '';
@@ -93,8 +109,16 @@ const Login = () => {
                                 <input type="password" name="password" id="password" value={formik.values.password} onChange={formik.handleChange} className={getError('password')}  />
 
                                 {
-                                    getError('password') &&
-                                    <span className="form-error">{formik?.errors?.password}</span>
+                                    formik?.touched?.password &&
+                                    <>
+                                        {
+                                            Object.keys(PASSWORD_VALIDATION).map(validate => {
+                                                return (
+                                                    <span className={`form-feedback ${formik?.errors?.password === validate ? 'invalid' : 'valid'}`}>{PASSWORD_VALIDATION?.[validate]}</span>
+                                                )
+                                            })
+                                        }
+                                    </>
                                 }
                             </div>
 

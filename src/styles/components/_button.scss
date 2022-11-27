@@ -1,0 +1,65 @@
+// Button
+.btn-control {
+    margin: 30px 0 25px;
+}
+.btn {
+    border-radius: 10px;
+    outline: none;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    color: $white;
+    padding: 17px 30px;
+    width: 100%;
+    border: none;
+    transition: 0.2s linear;
+    position: relative;
+
+    &-primary {
+        background-color: $blue;
+
+        &:hover {        
+            box-shadow: 0 2px 10px rgba(12, 87, 251, 0.2);
+        }
+    
+        &-outlined {
+            border: 1px solid $blue;
+            color: $blue;
+            &:hover {        
+                background-color: $blue;
+                color: $white;
+            }
+        }
+    }
+
+    &-small {
+        font-size: 16px;
+        line-height: 20px;
+        padding: 12px 30px;
+    }
+
+    &.loading {
+        color: transparent;
+        &:after {
+            animation: spinAround .5s infinite linear;
+            border: 2px solid #dbdbdb;
+            border-radius: 9999px;
+            border-right-color: transparent;
+            border-top-color: transparent;
+            content: "";
+            display: block;
+            height: 14px;
+            position: absolute;
+            width: 14px;
+            left: calc(50% - (14px * .5));
+            top: calc(50% - (14px * .5));
+            position: absolute;
+        }
+    }
+}
+
+@keyframes spinAround {
+    100% {
+        transform: rotate(360deg);
+    }
+}

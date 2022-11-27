@@ -1,0 +1,115 @@
+// Forms
+
+.form-control {
+    margin-bottom: 25px;
+    width: 100%;
+
+    &-col {
+        display: flex;
+
+        .form-control {
+            &:first-child {
+                margin-right: 20px; 
+            }
+        }
+    }
+
+    &-error {
+        border-color: #e74c3c !important;
+    }
+
+    label {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+        color: #646F7A;
+        display: block;
+        margin-bottom: 5px;
+
+        span {
+            color: #646F7A;
+        }
+    }
+
+    input {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #1D2B3B;
+        padding: 14px 20px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #EBF0F4;
+    }
+
+}
+
+.form-error {
+    font-size: 14px;
+    line-height: 18px;
+    color: #e74c3c;
+    margin-top: 7px;
+    display: block;
+}
+
+.form-note {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-back-login {
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1D2B3B;
+        span {
+            display: flex;
+            margin-right: 10px;
+        }
+    }
+}
+
+.form-radio {
+    position: relative;
+
+    label {
+        position: relative;
+        padding-left: 32px;
+        line-height: 22px;
+        display: block;
+        z-index: 4;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 22px;
+            height: 22px;
+            background-color: #EBF0F4;
+            border-radius: 50%;
+        }
+    }
+
+    input {
+        opacity: 0;
+        position: absolute;
+        &:checked {
+            + label {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 6px;
+                    top: 6px;
+                    width: 10px;
+                    height: 10px;
+                    background-color: #0C57FB;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

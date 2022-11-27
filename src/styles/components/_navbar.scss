@@ -1,0 +1,20 @@
+// Navbar
+header {
+    border-bottom: 1px solid #EBF0F4;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+
+    .l_logo {
+        padding: 0;
+        max-width: 120px;
+
+        img {
+            width: 100%;
+        }
+    }
+}

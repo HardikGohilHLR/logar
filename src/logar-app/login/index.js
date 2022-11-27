@@ -1,11 +1,26 @@
 // Login
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+import { auth, onAuthStateChanged, signInWithEmailAndPassword } from '../../firebase.config';
+
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    const [formMessages, setFormMessages] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                navigate('/');
+            }
+        });
+    }, [navigate]);
 
     const formik = useFormik({
         initialValues: {
@@ -17,7 +32,18 @@ const Login = () => {
             password: Yup.string().required('Password is required.'),
         }),
         onSubmit: values => {
-            console.log('values', values);
+            setIsLoading(true);
+			signInWithEmailAndPassword(auth, values.email, values.password)
+			.then(({user}) => {
+				setIsLoading(false);
+				localStorage.setItem('token', user?.accessToken);
+				localStorage.setItem('user', JSON.stringify({ email: user.email }));
+				navigate('/');
+			})
+			.catch((error) => {
+                setIsLoading(false);
+                setFormMessages({type: 'danger', message: error?.message});
+			});
         }
     });
 
@@ -38,6 +64,14 @@ const Login = () => {
                         <h3>Log in</h3>
                         <p>Welcome back! Please enter your credentials to continue.</p>
                     </div>
+
+                    {
+                        formMessages &&
+                        <div className={`message is-${formMessages?.type}`}>
+                            <p>{ formMessages?.message }</p>
+                            <button type="button" className="delete" onClick={() => setFormMessages(null)}>&#10005;	</button>
+                        </div>
+                    }
 
                     <div className="auth_content">
                         <form onSubmit={formik.handleSubmit}>
@@ -74,9 +108,7 @@ const Login = () => {
                             </div>
                             
                             <div className="btn-control">
-                                <button type="submit" className="btn btn-primary">
-                                    Login
-                                </button>
+                                <button type="submit" className={`btn btn-primary ${isLoading ? 'loading' : ''}`}> Login </button>
                             </div>
 
                             <p className="text-center">

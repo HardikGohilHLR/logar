@@ -207,9 +207,35 @@ p { font-size: 16px; line-height: 22px; color: #1D2B3B; font-weight: 400; }
     width: 100%;
     border: none;
     transition: 0.2s linear;
+    position: relative;
 
     &:hover {        
         box-shadow: 0 2px 10px rgba(12, 87, 251, 0.2);
+    }
+
+    &.loading {
+        color: transparent;
+        &:after {
+            animation: spinAround .5s infinite linear;
+            border: 2px solid #dbdbdb;
+            border-radius: 9999px;
+            border-right-color: transparent;
+            border-top-color: transparent;
+            content: "";
+            display: block;
+            height: 14px;
+            position: absolute;
+            width: 14px;
+            left: calc(50% - (14px * .5));
+            top: calc(50% - (14px * .5));
+            position: absolute;
+        }
+    }
+}
+
+@keyframes spinAround {
+    100% {
+        transform: rotate(360deg);
     }
 }
 
@@ -270,6 +296,40 @@ p { font-size: 16px; line-height: 22px; color: #1D2B3B; font-weight: 400; }
 
         &:first-child {
             margin-right: 26px;
+        }
+    }
+}
+
+.message {
+    padding: 10px 45px 10px 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+    p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .delete {
+        position: absolute;
+        right: 15px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #1D2B3B;
+        font-weight: 700;
+    }
+
+    &.is {
+        &-danger {
+            background-color: rgba(231, 76, 60, 0.1);
+            p { color: #E74C3C; }
+        }
+        &-success {
+            background-color: rgba(46, 204, 113, 0.1);
+            p { color: #2ecc71; }
         }
     }
 }

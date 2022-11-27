@@ -1,12 +1,27 @@
 // Signup
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+import { auth, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from '../../firebase.config';
+
 const Signup = () => {
+
+    const navigate = useNavigate();
+
+    const [formMessages, setFormMessages] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                navigate('/');
+            }
+        });
+    }, [navigate]);
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -21,7 +36,30 @@ const Signup = () => {
             password: Yup.string().required('Password is required.'),
         }),
         onSubmit: values => {
-            console.log('values', values);
+            setIsLoading(true);
+            const { firstName, lastName, email, password } = values;
+
+            const name = `${firstName} ${lastName}`;
+
+			createUserWithEmailAndPassword(auth, email, password)
+			.then(() => {
+				updateProfile(auth.currentUser, {
+					displayName: name
+				})
+				.then(() => {
+                    navigate('/')
+					setFormMessages({type: 'success', message: 'Registerd successfully!'});
+                    setIsLoading(false);
+                })
+				.catch((error) => {
+                    setIsLoading(false);
+					setFormMessages({type: 'danger', message: error?.message});
+				});
+			})
+			.catch((error) => { 
+                setIsLoading(false);
+                setFormMessages({type: 'danger', message: error?.message});
+			});
         }
     });
 
@@ -42,6 +80,14 @@ const Signup = () => {
                         <h3>Sign up</h3>
                         <p>Fill this details to continue with Logar.</p>
                     </div>
+
+                    {
+                        formMessages &&
+                        <div className={`message is-${formMessages?.type}`}>
+                            <p>{ formMessages?.message }</p>
+                            <button type="button" className="delete" onClick={() => setFormMessages(null)}>&#10005;	</button>
+                        </div>
+                    }
 
                     <div className="auth_content">
                         <form onSubmit={formik.handleSubmit}>
@@ -91,7 +137,7 @@ const Signup = () => {
                             </div>
 
                             <div className="btn-control">
-                                <button type="submit" className="btn btn-primary"> Signup </button>
+                                <button type="submit" className={`btn btn-primary ${isLoading ? 'loading' : ''}`}> Signup </button>
                             </div>
 
                             <p className="text-center">

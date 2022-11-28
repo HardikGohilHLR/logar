@@ -33,6 +33,7 @@ const Login = () => {
         }),
         onSubmit: values => {
             setIsLoading(true);
+              
 			signInWithEmailAndPassword(auth, values.email, values.password)
 			.then(({user}) => {
 				setIsLoading(false);
@@ -96,10 +97,10 @@ const Login = () => {
 
                             <div className="form-note">
                                 <div className="form-remember">
-                                    <div className="form-radio">
-                                        <input type="checkbox" name="remember" id="remember" />
+                                    {/* <div className="form-radio">
+                                        <input type="checkbox" name="remember" id="remember" checked={formik.values.remember} onChange={formik.handleChange} value={formik.values.remember} />
                                         <label htmlFor="remember"> Keep me signed in </label>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <p> <Link to="/forgot-password" className="text-dark">Forgot Password?</Link> </p>

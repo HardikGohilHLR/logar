@@ -1,6 +1,9 @@
 // Button
 .btn-control {
     margin: 30px 0 25px;
+    @media only screen and (max-width: 768px){
+        margin: 25px 0 20px;
+    }
 }
 .btn {
     border-radius: 10px;
@@ -14,6 +17,10 @@
     border: none;
     transition: 0.2s linear;
     position: relative;
+    @media only screen and (max-width: 768px) {
+        font-size: 16px;
+        line-height: 20px;
+    }
 
     &-primary {
         background-color: $blue;
@@ -36,6 +43,11 @@
         font-size: 16px;
         line-height: 20px;
         padding: 12px 30px;
+        @media only screen and (max-width: 768px) {
+            font-size: 14px;
+            line-height: 18px;
+            padding: 10px 30px;
+        }
     }
 
     &.loading {
@@ -76,6 +88,9 @@
         position: relative;
         text-align: center;
         margin: 25px 0 35px;
+        @media only screen and (max-width: 768px) {
+            margin-bottom: 25px;
+        }
 
         &::after {
             content: '';
@@ -120,6 +135,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        @media only screen and (max-width: 768px) {
+            font-size: 14px;
+            line-height: 20px;
+            padding: 14px 25px;
+        }
 
         img {
             width: 22px;

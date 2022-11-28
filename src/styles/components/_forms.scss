@@ -3,6 +3,9 @@
 .form-control {
     margin-bottom: 25px;
     width: 100%;
+    @media only screen and (max-width: 768px){
+        margin-bottom: 20px;
+    }
 
     &-col {
         display: flex;
@@ -25,6 +28,10 @@
         color: $dark_gray;
         display: block;
         margin-bottom: 5px;
+        @media only screen and (max-width: 768px){
+            font-size: 14px;
+            line-height: 20px;            
+        }
 
         span {
             color: $dark_gray;
@@ -40,6 +47,9 @@
         width: 100%;
         border-radius: 5px;
         border: 1px solid $gray;
+        @media only screen and (max-width: 768px){
+            
+        }
     }
 
 }
@@ -50,6 +60,10 @@
     color: $red;
     margin-top: 7px;
     display: block;
+    @media only screen and (max-width: 768px){
+        font-size: 12px;
+        line-height: 16px;
+    }
 }
 
 .form-note {

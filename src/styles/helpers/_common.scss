@@ -11,7 +11,13 @@ a {
 img { width: 100%; font-size: 0; }
 input { outline: none; }
 button { background: none; outline: none; border: none; cursor: pointer; }
-p { font-size: 16px; line-height: 22px; color: $black; font-weight: 400; }
+p { 
+    font-size: 16px; line-height: 22px; color: $black; font-weight: 400; 
+    @media only screen and (max-width: 768px) {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
 
 
 // Fonts
@@ -45,7 +51,6 @@ p { font-size: 16px; line-height: 22px; color: $black; font-weight: 400; }
     margin: 0 auto;
 }
 
-
 .message {
     padding: 10px 45px 10px 15px;
     display: flex;
@@ -53,6 +58,9 @@ p { font-size: 16px; line-height: 22px; color: $black; font-weight: 400; }
     position: relative;
     border-radius: 5px;
     margin-bottom: 20px;
+    @media only screen and (max-width: 768px) {
+        margin-bottom: 15px;         
+    }
 
     p {
         font-size: 14px;
@@ -66,6 +74,11 @@ p { font-size: 16px; line-height: 22px; color: $black; font-weight: 400; }
         line-height: 20px;
         color: $black;
         font-weight: 700;
+        @media only screen and (max-width: 768px){
+            font-size: 12px;
+            line-height: 16px;
+            margin-bottom: 10px;         
+        }
     }
 
     &.is {

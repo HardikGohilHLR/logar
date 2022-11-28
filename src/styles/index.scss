@@ -15,7 +15,10 @@
     text-align: center;
     padding: 50px 0 60px;
     font-size: 0;
-
+    @media only screen and (max-width: 768px){
+        border: none;
+        padding: 40px 0 0;
+    }
 
     img {
         width: 155px;
@@ -26,16 +29,28 @@
     border: 1px solid $gray;
     border-radius: 3px;
     padding: 45px 50px;
+    @media only screen and (max-width: 768px){
+        border: none;
+        padding: 40px 10px;
+    }
 }
 
 .auth_header {
     margin-bottom: 40px;
+    @media only screen and (max-width: 768px){
+        margin-bottom: 35px;      
+    }
     h3 {
         font-size: 28px;
         line-height: 32px;
         font-weight: 500;
         color: $black;
         margin-bottom: 15px;
+        @media only screen and (max-width: 768px){
+            font-size: 26px;
+            line-height: 30px;
+            margin-bottom: 12px;         
+        }
     }
     p {
         font-size: 14px;
@@ -50,11 +65,20 @@
     padding: 30px 0;
     h1 {
         margin-bottom: 40px;
+        @media only screen and (max-width: 768px) {
+            font-size: 26px;
+            line-height: 30px;
+            margin-bottom: 30px;
+        }
     }
 
     h2 {
         display: flex;
         align-items: center;
+        @media only screen and (max-width: 768px) {
+            font-size: 20px;
+            line-height: 24px;
+        }
     }
 
     .login-method {

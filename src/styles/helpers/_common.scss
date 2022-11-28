@@ -3,7 +3,7 @@
 ol, ul { list-style: none; } 
 body { overflow-x: hidden; }
 a { 
-    display: inline-block; text-decoration: none; color: #0C57FB; 
+    display: inline-block; text-decoration: none; color: $blue; 
     &:hover {
         text-decoration: underline;
     }
@@ -11,7 +11,7 @@ a {
 img { width: 100%; font-size: 0; }
 input { outline: none; }
 button { background: none; outline: none; border: none; cursor: pointer; }
-p { font-size: 16px; line-height: 22px; color: #1D2B3B; font-weight: 400; }
+p { font-size: 16px; line-height: 22px; color: $black; font-weight: 400; }
 
 
 // Fonts
@@ -34,7 +34,7 @@ p { font-size: 16px; line-height: 22px; color: #1D2B3B; font-weight: 400; }
 }
 
 // Common classes
-.text-dark { color: #1D2B3B; }
+.text-dark { color: $black; }
 .text-center { text-align: center; }
 .font-medium { font-weight: 500; }
 
@@ -64,18 +64,18 @@ p { font-size: 16px; line-height: 22px; color: #1D2B3B; font-weight: 400; }
         right: 15px;
         font-size: 14px;
         line-height: 20px;
-        color: #1D2B3B;
+        color: $black;
         font-weight: 700;
     }
 
     &.is {
         &-danger {
             background-color: rgba(231, 76, 60, 0.1);
-            p { color: #E74C3C; }
+            p { color: $red; }
         }
         &-success {
             background-color: rgba(46, 204, 113, 0.1);
-            p { color: #2ecc71; }
+            p { color: $green; }
         }
     }
 }

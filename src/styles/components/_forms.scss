@@ -15,19 +15,19 @@
     }
 
     &-error {
-        border-color: #e74c3c !important;
+        border-color: $red !important;
     }
 
     label {
         font-size: 16px;
         line-height: 22px;
         font-weight: 400;
-        color: #646F7A;
+        color: $dark_gray;
         display: block;
         margin-bottom: 5px;
 
         span {
-            color: #646F7A;
+            color: $dark_gray;
         }
     }
 
@@ -35,36 +35,19 @@
         font-size: 16px;
         line-height: 20px;
         font-weight: 400;
-        color: #1D2B3B;
+        color: $black;
         padding: 14px 20px;
         width: 100%;
         border-radius: 5px;
-        border: 1px solid #EBF0F4;
+        border: 1px solid $gray;
     }
 
-}
-
-.form-feedback {
-    font-size: 14px;
-    line-height: 18px;
-    color: #646F7A;
-    margin-top: 7px;
-    display: block;
-
-    &.invalid {
-        color: #e74c3c;
-    }
-
-    &.valid {
-        color: $green;
-
-    }
 }
 
 .form-error {
     font-size: 14px;
     line-height: 18px;
-    color: #e74c3c;
+    color: $red;
     margin-top: 7px;
     display: block;
 }
@@ -80,7 +63,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #1D2B3B;
+        color: $black;
         span {
             display: flex;
             margin-right: 10px;
@@ -106,7 +89,7 @@
             top: 0;
             width: 22px;
             height: 22px;
-            background-color: #EBF0F4;
+            background-color: $gray;
             border-radius: 50%;
         }
     }
@@ -123,7 +106,7 @@
                     top: 6px;
                     width: 10px;
                     height: 10px;
-                    background-color: #0C57FB;
+                    background-color: $blue;
                     border-radius: 50%;
                 }
             }

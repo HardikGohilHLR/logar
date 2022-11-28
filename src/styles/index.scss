@@ -23,7 +23,7 @@
 }
 
 .auth_container {
-    border: 1px solid #EBF0F4;
+    border: 1px solid $gray;
     border-radius: 3px;
     padding: 45px 50px;
 }
@@ -34,13 +34,45 @@
         font-size: 28px;
         line-height: 32px;
         font-weight: 500;
-        color: #1D2B3B;
+        color: $black;
         margin-bottom: 15px;
     }
     p {
         font-size: 14px;
         line-height: 18px;
         font-weight: 400;
-        color: #646F7A;
+        color: $dark_gray;
     }
 }
+
+
+.home {
+    padding: 30px 0;
+    h1 {
+        margin-bottom: 40px;
+    }
+
+    h2 {
+        display: flex;
+        align-items: center;
+    }
+
+    .login-method {
+        margin-top: 10px;
+        display: flex;
+        align-items: center; 
+        font-weight: 400;
+        img {
+            width: 20px;
+            margin-left: 10px;
+        }
+    }
+}
+
+.preloader {
+    position: fixed;
+    animation: spinAround 1.5s infinite linear;
+    left: calc(50% - (14px * .5));
+    top: calc(50% - (14px * .5));
+    z-index: 5;
+}   

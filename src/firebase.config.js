@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, sendPasswordResetEmail, createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, sendPasswordResetEmail, createUserWithEmailAndPassword, updateProfile, signOut, verifyPasswordResetCode, confirmPasswordReset } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -18,7 +18,7 @@ const fire = initializeApp(firebaseConfig);
 const auth = getAuth();
 
 export { 
-    auth, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signOut, sendPasswordResetEmail
+    auth, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signOut, sendPasswordResetEmail, verifyPasswordResetCode, confirmPasswordReset
 };
 
 export default fire;

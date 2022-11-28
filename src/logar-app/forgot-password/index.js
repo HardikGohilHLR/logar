@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { auth, sendPasswordResetEmail } from '../../firebase.config';
-import Alert from '../../components/alert';
 import { ERROR_MESSAGES } from '../../common/constant';
+import { auth, sendPasswordResetEmail } from '../../firebase.config';
+
+import Alert from '../../components/alert';
 
 const ForgotPassword = () => {
     

@@ -1,6 +1,6 @@
 // Home
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { auth, onAuthStateChanged } from '../../firebase.config';
 
@@ -10,16 +10,16 @@ const Home = () => {
 
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
+    const [searchParams] = useSearchParams();
     
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user);
-            } else {
-                navigate('/login');
-            }
-        });
-    }, [navigate]);
+        const resetCode = searchParams.get("oobCode");
+		if(resetCode) {
+			navigate(`/reset-password?oobCode=${resetCode}`);
+		} else {
+            onAuthStateChanged(auth, user => user ? setUser(user) : navigate('/login'));
+		}
+    }, [navigate, searchParams]);
     
     return (
         <React.Fragment>
@@ -28,17 +28,17 @@ const Home = () => {
 
             <div className="home">
                 <div className="container">
-
                     <h1>Hey, {user?.displayName}</h1>
 
-                    <h2>{user?.email}</h2>
-
+                    <h2> Email - {user?.email} </h2>
+    
                     {
                         user?.providerData?.length === 1 && user?.providerData?.[0]?.providerId === 'google.com' &&
-                        <span className="tag is-danger ml-3 is-inline-flex is-align-items-center">
-                            Logged in with Google
+                        <span className="login-method">
+                            Logged in with <img src="/images/google-icon.svg" alt="Google" width={20} />
                         </span>
-                    }
+                    }    
+
                 </div>
             </div>
 
